@@ -20,12 +20,21 @@
                             </ul>
                         </div>
                     @endif
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+     @foreach ($errors->all() as $error)
+         <li>{{$error}}</li>
+     @endforeach
+</div>
+ @endif
     <div class="row">
         <div class="col-sm-6">
 
             <div class="testbox">
             <form action="save-family-details" method="POST" id="family" name="file_form" enctype="multipart/form-data">
                 @csrf
+                
                 <div class="banner">
                     <h1>Family Details</h1>
                     

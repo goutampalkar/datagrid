@@ -32,15 +32,15 @@ class FamilyController extends Controller
             //throw $th;
         }
     }
-    public function save(Request $request)
+    
+    public function save1(Request $request)
     {
-        try {
             $request->validate([
                 'file' => 'required|mimes:jpg,png,doc,docx,pdf,ppt,zip|max:100240',
                 'fname' => 'required',
                 'lname' => 'required',
                 'phone' => 'required',
-                'bdate' => 'required',
+                'bdate' => 'required|date|before:-21 years',
                 'marital_sts' => 'required',
                 'address' => 'required',
                 'pincode' => 'required',
@@ -85,8 +85,6 @@ class FamilyController extends Controller
                 }
                 return redirect()->route('home')
                         ->with('success','Family created successfully');
-        } catch (Exception $th) {
-           return $th;
-        }
+       
     }
 }
